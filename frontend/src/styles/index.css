@@ -6,37 +6,40 @@
 
 /*
  * REVIO DESIGN SYSTEM
- * Dark-first, graphite-warm surfaces, single vermillion signal accent.
- * Three typographic modes: sans (product UI), serif (editorial), mono (technical).
+ * Graphite canvas, warm elevated surfaces, intentional Vermillion Signal (#FF7442).
+ * Typographic trio: sans (Geist for UI), serif (Instrument Serif for editorial moments), mono (JetBrains Mono for technical metadata).
  */
 
 @theme inline {
+  --radius-xs: 2px;
   --radius-sm: 3px;
   --radius-md: 4px;
   --radius-lg: 6px;
   --radius-xl: 8px;
-  --radius-2xl: 10px;
-  --radius-3xl: 14px;
-  --radius-4xl: 18px;
+  --radius-2xl: 12px;
 
-  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, Cambria, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
   --color-surface-sunken: var(--surface-sunken);
+  --color-surface-hover: var(--surface-hover);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-signal: var(--signal);
   --color-signal-soft: var(--signal-soft);
   --color-signal-foreground: var(--signal-foreground);
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -45,14 +48,17 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
+  --color-border-subtle: var(--border-subtle);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
+
   --color-new: var(--cat-new);
   --color-improved: var(--cat-improved);
   --color-fixed: var(--cat-fixed);
+
   --color-paper: var(--paper);
   --color-paper-foreground: var(--paper-foreground);
   --color-paper-muted: var(--paper-muted);
@@ -62,62 +68,53 @@
 :root {
   --radius: 4px;
 
-  --background: oklch(0.168 0.006 60);
-  --foreground: oklch(0.955 0.004 80);
-  --surface: oklch(0.204 0.006 62);
-  --surface-raised: oklch(0.235 0.007 62);
-  --surface-sunken: oklch(0.145 0.005 60);
+  /* Sophisticated Dark Graphite Spectrum */
+  --background: oklch(0.145 0.005 60); /* #111110 */
+  --foreground: oklch(0.96 0.003 80);  /* Soft crisp white */
+  --surface: oklch(0.185 0.006 62);    /* #191918 */
+  --surface-raised: oklch(0.22 0.007 62);
+  --surface-sunken: oklch(0.125 0.004 60);
+  --surface-hover: oklch(0.24 0.007 62);
 
-  --card: oklch(0.204 0.006 62);
-  --card-foreground: oklch(0.955 0.004 80);
-  --popover: oklch(0.222 0.007 62);
-  --popover-foreground: oklch(0.955 0.004 80);
+  --card: oklch(0.185 0.006 62);
+  --card-foreground: oklch(0.96 0.003 80);
+  --popover: oklch(0.20 0.006 62);
+  --popover-foreground: oklch(0.96 0.003 80);
 
-  --signal: oklch(0.685 0.175 42);
-  --signal-soft: oklch(0.685 0.175 42 / 14%);
-  --signal-foreground: oklch(0.16 0.02 40);
+  /* Vermillion Signal Accent - Intentional & Rare */
+  --signal: oklch(0.685 0.175 42); /* #FF7442 */
+  --signal-soft: oklch(0.685 0.175 42 / 12%);
+  --signal-foreground: oklch(0.12 0.01 40);
 
   --primary: oklch(0.685 0.175 42);
-  --primary-foreground: oklch(0.16 0.02 40);
+  --primary-foreground: oklch(0.12 0.01 40);
 
-  --secondary: oklch(0.26 0.007 62);
-  --secondary-foreground: oklch(0.94 0.004 80);
-  --muted: oklch(0.24 0.006 62);
-  --muted-foreground: oklch(0.665 0.008 70);
-  --accent: oklch(0.27 0.008 62);
+  --secondary: oklch(0.23 0.006 62);
+  --secondary-foreground: oklch(0.92 0.004 80);
+  --muted: oklch(0.20 0.005 62);
+  --muted-foreground: oklch(0.62 0.007 70);
+  --accent: oklch(0.24 0.007 62);
   --accent-foreground: oklch(0.96 0.004 80);
-  --destructive: oklch(0.58 0.19 22);
-  --destructive-foreground: oklch(0.97 0.01 80);
+  --destructive: oklch(0.56 0.18 24);
+  --destructive-foreground: oklch(0.98 0.01 80);
 
+  /* Restrained Hairline Borders */
+  --border-subtle: oklch(1 0 0 / 6%);
   --border: oklch(1 0 0 / 9%);
-  --border-strong: oklch(1 0 0 / 16%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.685 0.175 42 / 55%);
+  --border-strong: oklch(1 0 0 / 15%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.685 0.175 42 / 45%);
 
-  --cat-new: oklch(0.78 0.15 155);
-  --cat-improved: oklch(0.75 0.12 235);
-  --cat-fixed: oklch(0.8 0.13 90);
+  /* Category Signal Colors */
+  --cat-new: oklch(0.78 0.14 150);
+  --cat-improved: oklch(0.76 0.12 230);
+  --cat-fixed: oklch(0.80 0.13 90);
 
-  /* Editorial / public-facing surface */
-  --paper: oklch(0.972 0.006 85);
-  --paper-foreground: oklch(0.21 0.01 60);
-  --paper-muted: oklch(0.52 0.012 65);
-  --paper-border: oklch(0.21 0.01 60 / 12%);
-
-  --chart-1: var(--signal);
-  --chart-2: var(--cat-improved);
-  --chart-3: var(--cat-new);
-  --chart-4: var(--cat-fixed);
-  --chart-5: oklch(0.6 0.05 62);
-
-  --sidebar: oklch(0.185 0.006 60);
-  --sidebar-foreground: oklch(0.94 0.004 80);
-  --sidebar-primary: var(--signal);
-  --sidebar-primary-foreground: oklch(0.16 0.02 40);
-  --sidebar-accent: oklch(0.25 0.007 62);
-  --sidebar-accent-foreground: oklch(0.96 0.004 80);
-  --sidebar-border: oklch(1 0 0 / 9%);
-  --sidebar-ring: var(--ring);
+  /* Warm Paper Customer Changelog Surface */
+  --paper: oklch(0.975 0.006 85);
+  --paper-foreground: oklch(0.20 0.01 60);
+  --paper-muted: oklch(0.48 0.012 65);
+  --paper-border: oklch(0.20 0.01 60 / 10%);
 }
 
 @layer base {
@@ -127,27 +124,36 @@
 
   html {
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv01";
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    line-height: 1.5;
   }
 
   ::selection {
     background: var(--signal);
     color: var(--signal-foreground);
   }
+
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 2px;
+  }
 }
 
+/* TYPOGRAPHIC MODES */
 @utility text-editorial {
   font-family: var(--font-serif);
   font-weight: 400;
   letter-spacing: -0.015em;
-  line-height: 1.05;
+  line-height: 1.08;
 }
 
 @utility text-meta {
@@ -164,25 +170,23 @@
   letter-spacing: -0.01em;
 }
 
-@utility rule {
-  border-top: 1px solid var(--border);
+/* INTERACTION & MOTION UTILITIES */
+@utility transition-subtle {
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-duration: 160ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@utility hairline-grid {
-  background-image:
-    linear-gradient(to right, var(--border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
-@utility signal-underline {
-  box-shadow: inset 0 -2px 0 0 var(--signal);
+@utility transition-layer {
+  transition-property: opacity, transform;
+  transition-duration: 220ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes revio-rise {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -191,28 +195,23 @@
 }
 
 @keyframes revio-pulse {
-  0%,
-  100% {
-    opacity: 0.35;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes revio-trace {
-  from {
-    stroke-dashoffset: 220;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
 }
 
 @utility animate-rise {
-  animation: revio-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: revio-rise 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @utility animate-signal-pulse {
-  animation: revio-pulse 2.4s ease-in-out infinite;
+  animation: revio-pulse 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

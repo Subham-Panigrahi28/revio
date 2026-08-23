@@ -1,14 +1,20 @@
 import React from "react";
-import { createBrowserRouter, Navigate, Link } from "react-router-dom";
+import { createBrowserRouter, Navigate, Link, useParams } from "react-router-dom";
 import { LandingPage } from "../pages/LandingPage.jsx";
 import { ConnectPage } from "../pages/ConnectPage.jsx";
 import { OnboardingPage } from "../pages/OnboardingPage.jsx";
 import { DashboardPage } from "../pages/DashboardPage.jsx";
+import { ActivityPage } from "../pages/ActivityPage.jsx";
+import { ReleasesPage } from "../pages/ReleasesPage.jsx";
 import { ReleaseEditorPage } from "../pages/ReleaseEditorPage.jsx";
-import { PublishGatePage } from "../pages/PublishGatePage.jsx";
 import { PublicChangelogPage } from "../pages/PublicChangelogPage.jsx";
 import { DistributionPage } from "../pages/DistributionPage.jsx";
 import { SettingsPage } from "../pages/SettingsPage.jsx";
+
+function RedirectToPublishModal() {
+  const { id } = useParams();
+  return <Navigate to={`/releases/${id || "v2-14-0"}?publish=true`} replace />;
+}
 
 function NotFound() {
   return (
@@ -54,8 +60,12 @@ export const router = createBrowserRouter([
     element: <DashboardPage />,
   },
   {
+    path: "/activity",
+    element: <ActivityPage />,
+  },
+  {
     path: "/releases",
-    element: <Navigate to="/dashboard" replace />,
+    element: <ReleasesPage />,
   },
   {
     path: "/releases/:id",
@@ -67,7 +77,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/publish/:id",
-    element: <PublishGatePage />,
+    element: <RedirectToPublishModal />,
   },
   {
     path: "/changelog",
@@ -75,6 +85,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "/c/:slug",
+    element: <PublicChangelogPage />,
+  },
+  {
+    path: "/c/:slug/v/:version",
     element: <PublicChangelogPage />,
   },
   {

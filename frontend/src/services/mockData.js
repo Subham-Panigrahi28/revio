@@ -37,6 +37,7 @@ export const draftRelease = {
           contributors: ["mkrause", "ana.ferreira", "dpatel"],
           mergedAt: "Aug 19, 14:02",
           hashes: ["4f0c1ab", "9de4471", "c118a2e"],
+          trustBadge: "High confidence",
         },
         {
           pr: 1851,
@@ -46,6 +47,7 @@ export const draftRelease = {
           contributors: ["ana.ferreira"],
           mergedAt: "Aug 20, 09:41",
           hashes: ["77bb019", "2ac66f3"],
+          trustBadge: "High confidence",
         },
       ],
     },
@@ -63,6 +65,7 @@ export const draftRelease = {
           contributors: ["jlindqvist"],
           mergedAt: "Aug 21, 11:15",
           hashes: ["ba01c7d", "31f9e08"],
+          trustBadge: "High confidence",
         },
       ],
     },
@@ -80,6 +83,7 @@ export const draftRelease = {
           contributors: ["dpatel", "mkrause"],
           mergedAt: "Aug 20, 17:33",
           hashes: ["e5510cc", "0aa7b31", "9c2f4de"],
+          trustBadge: "High confidence",
         },
       ],
     },
@@ -97,6 +101,7 @@ export const draftRelease = {
           contributors: ["ana.ferreira"],
           mergedAt: "Aug 22, 08:07",
           hashes: ["18cc902"],
+          trustBadge: "Needs review",
         },
       ],
     },
@@ -114,6 +119,7 @@ export const draftRelease = {
           contributors: ["jlindqvist"],
           mergedAt: "Aug 19, 19:58",
           hashes: ["7d3ba15"],
+          trustBadge: "High confidence",
         },
       ],
     },
@@ -131,11 +137,68 @@ export const draftRelease = {
           contributors: ["dpatel"],
           mergedAt: "Aug 21, 16:24",
           hashes: ["cf2210b", "50a7f9d"],
+          trustBadge: "High confidence",
         },
       ],
     },
   ],
 };
+
+export const unassignedActivity = [
+  {
+    pr: 1876,
+    title: "feat: passkey authentication sign-in fallback",
+    commits: 5,
+    branch: "feat/passkey-fallback",
+    author: "alex",
+    mergedAt: "2 hours ago",
+    trustBadge: "Needs review",
+    reason: "Adds user-facing WebAuthn fallback component",
+  },
+  {
+    pr: 1881,
+    title: "fix: mobile navigation drawer overflow on Safari",
+    commits: 2,
+    branch: "fix/mobile-nav-safari",
+    author: "maya",
+    mergedAt: "4 hours ago",
+    trustBadge: "Needs review",
+    reason: "Resolves UI rendering glitch on mobile browsers",
+  },
+  {
+    pr: 1884,
+    title: "perf: index webhook logs table by workspace_id",
+    commits: 3,
+    branch: "perf/webhook-index",
+    author: "dpatel",
+    mergedAt: "6 hours ago",
+    trustBadge: "High confidence",
+    reason: "Database query optimization for high-throughput workspaces",
+  },
+];
+
+export const ignoredActivity = [
+  {
+    pr: 1874,
+    title: "chore: bump lockfile dependencies",
+    commits: 1,
+    branch: "chore/bump-lockfile",
+    author: "ci-bot",
+    mergedAt: "5 hours ago",
+    trustBadge: "Auto-filtered",
+    reason: "Dependency lockfile update without user-facing code changes",
+  },
+  {
+    pr: 1882,
+    title: "ci: update GitHub Actions vitest runner node version to 22",
+    commits: 2,
+    branch: "ci/update-node-runner",
+    author: "ana.ferreira",
+    mergedAt: "7 hours ago",
+    trustBadge: "Auto-filtered",
+    reason: "Internal CI pipeline configuration update",
+  },
+];
 
 export const publishedReleases = [
   {

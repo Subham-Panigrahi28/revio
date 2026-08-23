@@ -27,10 +27,35 @@ export function WorkspaceProvider({ children }) {
       webhookAlerts: true,
       slackIntegration: false,
     },
+    developerSettings: {
+      apiKey: "rev_live_9f8a42b109e34c87",
+      webhookSecret: "whsec_7d2e99a811c0f4",
+      lastSyncTimestamp: "4 minutes ago",
+    },
+    widgetSettings: {
+      theme: "dark",
+      accentColor: "#FF7442",
+      position: "bottom-right",
+    },
   });
 
   const updateWorkspace = (fields) => {
     setWorkspace((prev) => ({ ...prev, ...fields }));
+  };
+
+  const updateWidgetSettings = (fields) => {
+    setWorkspace((prev) => ({
+      ...prev,
+      widgetSettings: { ...prev.widgetSettings, ...fields },
+    }));
+  };
+
+  const rotateApiKey = () => {
+    const newKey = `rev_live_${Math.random().toString(36).substring(2, 18)}`;
+    setWorkspace((prev) => ({
+      ...prev,
+      developerSettings: { ...prev.developerSettings, apiKey: newKey },
+    }));
   };
 
   const selectRepository = (repoName) => {
@@ -48,7 +73,15 @@ export function WorkspaceProvider({ children }) {
   };
 
   return (
-    <WorkspaceContext.Provider value={{ workspace, updateWorkspace, selectRepository }}>
+    <WorkspaceContext.Provider
+      value={{
+        workspace,
+        updateWorkspace,
+        updateWidgetSettings,
+        rotateApiKey,
+        selectRepository,
+      }}
+    >
       {children}
     </WorkspaceContext.Provider>
   );

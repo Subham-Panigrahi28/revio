@@ -6,7 +6,7 @@ import App from "./App.jsx";
 describe("Revio Frontend Application Shell", () => {
   it("renders Revio landing page hero section without crashing", () => {
     render(<App />);
-    expect(screen.getByText("Your repository already knows what shipped.")).toBeDefined();
-    expect(screen.getByText("Revio turns it into something a customer can read.")).toBeDefined();
+    expect(screen.getByText(/Turn what you ship into updates/i)).toBeDefined();
+    expect(screen.getAllByText(/customers actually understand/i).length).toBeGreaterThan(0);
   });
 });
