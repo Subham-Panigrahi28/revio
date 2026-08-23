@@ -1,0 +1,218 @@
+@import "tailwindcss" source(none);
+@source "../";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * REVIO DESIGN SYSTEM
+ * Dark-first, graphite-warm surfaces, single vermillion signal accent.
+ * Three typographic modes: sans (product UI), serif (editorial), mono (technical).
+ */
+
+@theme inline {
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
+  --radius-3xl: 14px;
+  --radius-4xl: 18px;
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-signal-foreground: var(--signal-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-new: var(--cat-new);
+  --color-improved: var(--cat-improved);
+  --color-fixed: var(--cat-fixed);
+  --color-paper: var(--paper);
+  --color-paper-foreground: var(--paper-foreground);
+  --color-paper-muted: var(--paper-muted);
+  --color-paper-border: var(--paper-border);
+}
+
+:root {
+  --radius: 4px;
+
+  --background: oklch(0.168 0.006 60);
+  --foreground: oklch(0.955 0.004 80);
+  --surface: oklch(0.204 0.006 62);
+  --surface-raised: oklch(0.235 0.007 62);
+  --surface-sunken: oklch(0.145 0.005 60);
+
+  --card: oklch(0.204 0.006 62);
+  --card-foreground: oklch(0.955 0.004 80);
+  --popover: oklch(0.222 0.007 62);
+  --popover-foreground: oklch(0.955 0.004 80);
+
+  --signal: oklch(0.685 0.175 42);
+  --signal-soft: oklch(0.685 0.175 42 / 14%);
+  --signal-foreground: oklch(0.16 0.02 40);
+
+  --primary: oklch(0.685 0.175 42);
+  --primary-foreground: oklch(0.16 0.02 40);
+
+  --secondary: oklch(0.26 0.007 62);
+  --secondary-foreground: oklch(0.94 0.004 80);
+  --muted: oklch(0.24 0.006 62);
+  --muted-foreground: oklch(0.665 0.008 70);
+  --accent: oklch(0.27 0.008 62);
+  --accent-foreground: oklch(0.96 0.004 80);
+  --destructive: oklch(0.58 0.19 22);
+  --destructive-foreground: oklch(0.97 0.01 80);
+
+  --border: oklch(1 0 0 / 9%);
+  --border-strong: oklch(1 0 0 / 16%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.685 0.175 42 / 55%);
+
+  --cat-new: oklch(0.78 0.15 155);
+  --cat-improved: oklch(0.75 0.12 235);
+  --cat-fixed: oklch(0.8 0.13 90);
+
+  /* Editorial / public-facing surface */
+  --paper: oklch(0.972 0.006 85);
+  --paper-foreground: oklch(0.21 0.01 60);
+  --paper-muted: oklch(0.52 0.012 65);
+  --paper-border: oklch(0.21 0.01 60 / 12%);
+
+  --chart-1: var(--signal);
+  --chart-2: var(--cat-improved);
+  --chart-3: var(--cat-new);
+  --chart-4: var(--cat-fixed);
+  --chart-5: oklch(0.6 0.05 62);
+
+  --sidebar: oklch(0.185 0.006 60);
+  --sidebar-foreground: oklch(0.94 0.004 80);
+  --sidebar-primary: var(--signal);
+  --sidebar-primary-foreground: oklch(0.16 0.02 40);
+  --sidebar-accent: oklch(0.25 0.007 62);
+  --sidebar-accent-foreground: oklch(0.96 0.004 80);
+  --sidebar-border: oklch(1 0 0 / 9%);
+  --sidebar-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  ::selection {
+    background: var(--signal);
+    color: var(--signal-foreground);
+  }
+}
+
+@utility text-editorial {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+
+@utility text-meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility text-code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+@utility rule {
+  border-top: 1px solid var(--border);
+}
+
+@utility hairline-grid {
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@utility signal-underline {
+  box-shadow: inset 0 -2px 0 0 var(--signal);
+}
+
+@keyframes revio-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes revio-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes revio-trace {
+  from {
+    stroke-dashoffset: 220;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@utility animate-rise {
+  animation: revio-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-signal-pulse {
+  animation: revio-pulse 2.4s ease-in-out infinite;
+}
